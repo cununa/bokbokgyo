@@ -40,6 +40,38 @@ function handleWorrySubmit() {
   updateCount(document.getElementById('worryText'));
 }
 
+// ---------- 사전 회원가입 ----------
+const MEMBER_BASE_COUNT = 128;
+
+function getMemberNumber() {
+  return Number(localStorage.getItem('bokbokgyoMemberNumber') || MEMBER_BASE_COUNT);
+}
+
+function setMemberNumber(value) {
+  localStorage.setItem('bokbokgyoMemberNumber', String(value));
+  const el = document.getElementById('memberNumber');
+  if (el) el.textContent = value.toLocaleString();
+}
+
+function handleSocialSignup(provider) {
+  const next = getMemberNumber() + 1;
+  setMemberNumber(next);
+  alert(`${provider} 회원가입은 곧 연결됩니다.\n사전회원 ${next.toLocaleString()}번째로 접수해둘게요.`);
+}
+
+function handleSignupSubmit() {
+  const email = document.getElementById('signupEmail')?.value.trim();
+  if (!email) {
+    alert('이메일을 입력해주세요.');
+    return;
+  }
+
+  const next = getMemberNumber() + 1;
+  setMemberNumber(next);
+  document.getElementById('signupEmail').value = '';
+  alert(`${email}\n${next.toLocaleString()}번째 사전회원으로 접수되었습니다.`);
+}
+
 // ---------- 상품 데이터 ----------
 const products = [
   { id: 1, name: '복복교 부적키링', desc: '행운을 부르는 부적', price: 12000, category: 'keyring', badge: 'BEST', svg: 'keyring' },
@@ -259,4 +291,5 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 // ---------- 초기 렌더링 ----------
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts('all');
+  setMemberNumber(getMemberNumber());
 });

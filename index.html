@@ -527,6 +527,44 @@
     </section>
   </main>
 
+  <!-- ============ SIGNUP ============ -->
+  <section class="signup" id="signup">
+    <div class="signup__inner">
+      <div class="signup__copy">
+        <span class="signup__eyebrow">복복교 사전회원</span>
+        <h2 class="signup__title">복을 기다리는 사람들,<br/>지금 함께 들어오세요</h2>
+        <p class="signup__desc">
+          회원이 되면 신상품 소식, 한정 굿즈 오픈, 행운 이벤트를 가장 먼저 받아볼 수 있어요.
+        </p>
+        <div class="signup__counter" aria-live="polite">
+          <span>당신은</span>
+          <strong id="memberNumber">128</strong>
+          <span>번째 사전회원입니다</span>
+        </div>
+      </div>
+
+      <div class="signup__panel">
+        <h3>간편 회원가입</h3>
+        <p>자주 쓰는 계정으로 빠르게 시작하세요.</p>
+
+        <div class="social-login">
+          <button type="button" class="social-login__btn social-login__btn--kakao" onclick="handleSocialSignup('카카오')">카카오로 시작</button>
+          <button type="button" class="social-login__btn social-login__btn--naver" onclick="handleSocialSignup('네이버')">네이버로 시작</button>
+          <button type="button" class="social-login__btn social-login__btn--google" onclick="handleSocialSignup('구글')">구글로 시작</button>
+          <button type="button" class="social-login__btn social-login__btn--apple" onclick="handleSocialSignup('애플')">Apple로 시작</button>
+        </div>
+
+        <div class="signup__divider"><span>또는 이메일로 가입</span></div>
+
+        <form class="signup-form" onsubmit="event.preventDefault(); handleSignupSubmit();">
+          <input id="signupEmail" type="email" placeholder="이메일을 입력해주세요" required />
+          <button type="submit">회원가입</button>
+        </form>
+        <p class="signup__note">정식 로그인 연동 전까지는 사전회원 신청으로 접수됩니다.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ FOOTER ============ -->
   <footer class="footer" id="news">
     <div class="footer__inner">
