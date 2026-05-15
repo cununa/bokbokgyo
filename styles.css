@@ -377,6 +377,12 @@ ul { list-style: none; padding: 0; margin: 0; }
   box-shadow: 0 4px 12px rgba(240, 163, 113, 0.2);
 }
 .donate-btn--custom { color: var(--text-muted); }
+.worry-fee-note {
+  margin: 12px 0 0;
+  color: var(--text-soft);
+  font-size: 12px;
+  line-height: 1.6;
+}
 
 .worry-submit { display: flex; justify-content: center; margin-top: 36px; }
 

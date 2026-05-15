@@ -8,7 +8,7 @@ function updateCount(textarea) {
   if (counter) counter.textContent = textarea.value.length;
 }
 
-// ---------- 복비(기부) 금액 선택 ----------
+// ---------- 복비 이용료 금액 선택 ----------
 document.querySelectorAll('.donate-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.donate-btn').forEach(b => b.classList.remove('is-active'));
@@ -35,7 +35,7 @@ function handleWorrySubmit() {
   }
   const active = document.querySelector('.donate-btn.is-active');
   const amt = active?.dataset.customValue || active?.dataset.amount || '1000';
-  alert(`냥신님께 걱정을 전달했습니다.\n복비 ${Number(amt).toLocaleString()}원도 함께 보냈어요.\n복이 가득하시길! 🐾`);
+  alert(`냥신님께 걱정을 전달했습니다.\n복비 ${Number(amt).toLocaleString()}원으로 걱정 풀이를 신청했어요.\n복이 가득하시길! 🐾`);
   document.getElementById('worryText').value = '';
   updateCount(document.getElementById('worryText'));
 }
