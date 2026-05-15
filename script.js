@@ -42,9 +42,14 @@ function handleWorrySubmit() {
 
 // ---------- 사전 회원가입 ----------
 const MEMBER_BASE_COUNT = 128;
+const HERO_MEMBER_BASE_COUNT = 3;
 
 function getMemberNumber() {
   return Number(localStorage.getItem('bokbokgyoMemberNumber') || MEMBER_BASE_COUNT);
+}
+
+function getHeroMemberNumber() {
+  return Number(localStorage.getItem('bokbokgyoHeroMemberNumber') || HERO_MEMBER_BASE_COUNT);
 }
 
 function setMemberNumber(value) {
@@ -53,9 +58,17 @@ function setMemberNumber(value) {
   if (el) el.textContent = value.toLocaleString();
 }
 
+function setHeroMemberNumber(value) {
+  localStorage.setItem('bokbokgyoHeroMemberNumber', String(value));
+  const el = document.getElementById('heroMemberNumber');
+  if (el) el.textContent = value.toLocaleString();
+}
+
 function handleSocialSignup(provider) {
   const next = getMemberNumber() + 1;
+  const heroNext = getHeroMemberNumber() + 1;
   setMemberNumber(next);
+  setHeroMemberNumber(heroNext);
   alert(`${provider} 회원가입은 곧 연결됩니다.\n사전회원 ${next.toLocaleString()}번째로 접수해둘게요.`);
 }
 
@@ -67,7 +80,9 @@ function handleSignupSubmit() {
   }
 
   const next = getMemberNumber() + 1;
+  const heroNext = getHeroMemberNumber() + 1;
   setMemberNumber(next);
+  setHeroMemberNumber(heroNext);
   document.getElementById('signupEmail').value = '';
   alert(`${email}\n${next.toLocaleString()}번째 사전회원으로 접수되었습니다.`);
 }
@@ -292,4 +307,5 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts('all');
   setMemberNumber(getMemberNumber());
+  setHeroMemberNumber(getHeroMemberNumber());
 });
